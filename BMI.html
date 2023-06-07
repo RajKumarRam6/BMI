@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI CaLculator</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+
+    <script type="text/javascript">
+        function AgeChange() {
+            document.getElementById("textAge").value = document.getElementById("rangeAge").value;
+        }
+        function GenderChange() {
+            var maleRadio = document.getElementById("optMale");
+            var femaleRadio = document.getElementById("optFemale");
+            if(maleRadio.checked) {
+                document.getElementById("msg").innerHTML = "Your Gender is Male";
+            }
+            if(femaleRadio.checked) {
+                document.getElementById("msg").innerHTML = "Your Gender is Female";
+            }
+        }
+        function HeightChange() {
+            document.getElementById("textHeight").value = document.getElementById("rangeHeight").value;
+        }
+        function WeightChange() {
+            document.getElementById("textWeight").value = document.getElementById("rangeWeight").value;
+        }
+        function CalculateClick() {
+            var w = parseFloat(document.getElementById("textWeight").value);
+            var h = parseFloat(document.getElementById("textHeight").value);
+            var BMI = w / h / h;
+            document.getElementById("result").innerHTML = "Your Body-Mass-Index is " + BMI + " for " + document.getElementById("textAge").value + " years Age";
+        }
+    </script>
+</head>
+
+<body class="container-fluid">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <u><h2>BMI <span style="color: firebrick;">Calculator</span></h2></u>
+    <div style="border:10px; box-shadow:2px 2px 3px gray;padding:20px;background-color: darkseagreen;">
+        <div class="row mt-3">
+            <div class="col">
+                Age <input type="text" id="textAge" size="15"> <span>Ages:2-120</span>
+            </div>
+            <div class="col">
+                Gender
+            </div>
+            <div class="col">
+                *Height(cm) <input type="text" id="textHeight" size="15">
+            </div>
+            <div class="col">
+                *Weight(kgs) <input type="text" id="textWeight" size="15">
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col">
+                <div class="input-group">
+                    <span>2 Yrs</span>
+                    <div>
+                        <input class="form-range mx-2" min="2" max="120" value="2" type="range" step="1"
+                            onchange="AgeChange()" id="rangeAge">
+                    </div>
+                    <span class="ms-2">120 Yrs</span>
+                </div>
+            </div>
+            <div class="col">
+                <div class-="input-group">
+                    <p><span><input type="radio" onchange="GenderChange()" name="male" id="optMale" size="15">Male</span>
+                        <span><input type="radio" onchange="GenderChange()" name="female" id="optFemale" size="15">Female</span></p>
+                            <span id="msg"></span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="input-group">
+                    <span>80.8cm</span>
+                    <div>
+                        <input class="form-range mx-2" min="80.8" max="193" value="80.8" type="range" step="0.1"
+                            onchange="HeightChange()" id="rangeHeight">
+                    </div>
+                    <span class="ms-2">193cm</span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="input-group">
+                    <span>4 Kg</span>
+                    <div>
+                        <input class="form-range mx-2" min="4" max="362" value="4" type="range" step="0.1"
+                            onchange="WeightChange()" id="rangeWeight">
+                    </div>
+                    <span class="ms-2">362 Kg</span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col text-end">
+                <button onclick="CalculateClick()" class="btn btn-primary">Calculate</button>
+            </div>
+        </div>
+    </div>
+    <h2 class="text-center mt-3" id="result"></h2>
+</body>
+
+</html>
